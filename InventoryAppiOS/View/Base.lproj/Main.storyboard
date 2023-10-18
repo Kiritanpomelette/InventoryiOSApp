@@ -45,11 +45,41 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="1Qa-Pz-z4Z" id="F4P-O2-ebo"/>
+                        <segue destination="jxe-f4-eab" kind="show" identifier="openDetail" id="3MB-Qc-FH4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="e9V-Fx-10c">
+            <objects>
+                <viewController id="jxe-f4-eab" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="di2-nb-PuO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abn-lm-IYf">
+                                <rect key="frame" x="0.0" y="44" width="393" height="56"/>
+                                <items>
+                                    <navigationItem title="Title" id="X4s-TL-h2q"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FP6-5n-zB3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Abn-lm-IYf" firstAttribute="centerX" secondItem="FP6-5n-zB3" secondAttribute="centerX" id="54w-U8-e6H"/>
+                            <constraint firstItem="Abn-lm-IYf" firstAttribute="width" secondItem="di2-nb-PuO" secondAttribute="width" id="olr-fE-klV"/>
+                            <constraint firstItem="Abn-lm-IYf" firstAttribute="top" secondItem="FP6-5n-zB3" secondAttribute="top" constant="44" id="qGd-EG-l1f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hyu-Ae-WBg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Se8-HI-zIn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="4"/>
         </scene>
     </scenes>
     <resources>

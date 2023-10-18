@@ -15,10 +15,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TopScreenProductsTableViewCell",for: indexPath) as! TopScreenProductsTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "TopScreenProductsTableViewCell",
+            for: indexPath
+        ) as! TopScreenProductsTableViewCell
         
         cell.title.text = String(arc4random())
+        cell.detailButton.addTarget(self, action: #selector(onDetailButtonTap(sender:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func onDetailButtonTap(sender:Any){
+        performSegue(withIdentifier: "openDetail", sender: nil)
     }
     
 
