@@ -12,7 +12,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InventoryAppiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -23,27 +23,36 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Qa-Pz-z4Z">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="8I6-bM-ZpQ"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Jhj-Kl-1hN"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="ux2-XX-foL">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ux2-XX-foL" firstAttribute="leading" secondItem="1Qa-Pz-z4Z" secondAttribute="leading" id="05C-Pc-mdi"/>
+                            <constraint firstItem="ux2-XX-foL" firstAttribute="trailing" secondItem="1Qa-Pz-z4Z" secondAttribute="trailing" id="56m-VP-AcW"/>
                             <constraint firstItem="MW1-kr-Nzt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bsh-mO-1l2"/>
                             <constraint firstItem="1Qa-Pz-z4Z" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="GwL-DW-bHI"/>
                             <constraint firstItem="1Qa-Pz-z4Z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Iee-ub-FoO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Qa-Pz-z4Z" secondAttribute="bottom" id="N1N-Ta-HJb"/>
+                            <constraint firstItem="ux2-XX-foL" firstAttribute="top" secondItem="MW1-kr-Nzt" secondAttribute="top" id="gRh-ah-His"/>
                             <constraint firstItem="MW1-kr-Nzt" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="jpo-eU-Zw5"/>
                             <constraint firstItem="MW1-kr-Nzt" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m57-qO-Fiw"/>
+                            <constraint firstItem="ux2-XX-foL" firstAttribute="bottom" secondItem="1Qa-Pz-z4Z" secondAttribute="bottom" id="yGM-G2-a6z"/>
                             <constraint firstItem="1Qa-Pz-z4Z" firstAttribute="top" secondItem="MW1-kr-Nzt" secondAttribute="bottom" id="yqR-El-egS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="ux2-XX-foL" id="JRc-Df-U1X"/>
                         <outlet property="tableView" destination="1Qa-Pz-z4Z" id="F4P-O2-ebo"/>
                         <segue destination="jxe-f4-eab" kind="show" identifier="openDetail" id="3MB-Qc-FH4"/>
                     </connections>
