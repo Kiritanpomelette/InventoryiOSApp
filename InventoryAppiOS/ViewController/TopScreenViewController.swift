@@ -28,14 +28,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         ) as! TopScreenProductsTableViewCell
         
         let product = products[indexPath.row]
+        
         cell.bind(product: product)
         cell.detailButton.addTarget(self, action: #selector(onDetailButtonTap(sender:)), for: .touchUpInside)
-                
+        
+
         return cell
     }
     
-    @objc func onDetailButtonTap(sender:Any){
+    @objc func onDetailButtonTap(sender:UIButton){
         performSegue(withIdentifier: "openDetail", sender: nil)
+        print(sender.tag)
     }
     
     

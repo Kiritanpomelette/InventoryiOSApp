@@ -18,6 +18,7 @@
 		C45FC82B2ADF7DDA004D863C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45FC8292ADF7DDA004D863C /* LaunchScreen.storyboard */; };
 		C45FC8342ADF80FE004D863C /* TopScreenProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8322ADF80FE004D863C /* TopScreenProductsTableViewCell.swift */; };
 		C45FC8352ADF80FE004D863C /* TopScreenProductsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45FC8332ADF80FE004D863C /* TopScreenProductsTableViewCell.xib */; };
+		C4A930D32AE0F5A500C1A012 /* DegailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A930D22AE0F5A500C1A012 /* DegailScreenViewController.swift */; };
 		C4D835A72ADFA35F00CCDF94 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D835A62ADFA35F00CCDF94 /* apple.png */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		C45FC82C2ADF7DDA004D863C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45FC8322ADF80FE004D863C /* TopScreenProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenProductsTableViewCell.swift; sourceTree = "<group>"; };
 		C45FC8332ADF80FE004D863C /* TopScreenProductsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopScreenProductsTableViewCell.xib; sourceTree = "<group>"; };
+		C4A930D22AE0F5A500C1A012 /* DegailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegailScreenViewController.swift; sourceTree = "<group>"; };
 		C4D835A62ADFA35F00CCDF94 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C45FC8222ADF7DD8004D863C /* TopScreenViewController.swift */,
+				C4A930D22AE0F5A500C1A012 /* DegailScreenViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C45FC8232ADF7DD8004D863C /* TopScreenViewController.swift in Sources */,
+				C4A930D32AE0F5A500C1A012 /* DegailScreenViewController.swift in Sources */,
 				C45FC81F2ADF7DD8004D863C /* AppDelegate.swift in Sources */,
 				C42B61342AE0ECF600C9A120 /* ProductsRepository.swift in Sources */,
 				C45FC8342ADF80FE004D863C /* TopScreenProductsTableViewCell.swift in Sources */,

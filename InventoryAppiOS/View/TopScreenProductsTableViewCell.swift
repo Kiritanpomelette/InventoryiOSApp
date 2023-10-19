@@ -18,5 +18,6 @@ class TopScreenProductsTableViewCell: UITableViewCell {
     func bind(product: Product){
         title.text = product.name
         desc.text = product.memo
+        detailButton.tag = product.id
     }
 }
