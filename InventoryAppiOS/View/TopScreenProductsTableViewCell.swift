@@ -14,4 +14,9 @@ class TopScreenProductsTableViewCell: UITableViewCell {
     @IBOutlet weak var todayCount: UILabel!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    
+    func bind(product: Product){
+        title.text = product.name
+        desc.text = product.memo
+    }
 }

@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C42B61342AE0ECF600C9A120 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B61332AE0ECF600C9A120 /* ProductsRepository.swift */; };
+		C42B61372AE0ED3E00C9A120 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B61362AE0ED3E00C9A120 /* Product.swift */; };
+		C42B613A2AE0F0F700C9A120 /* SwinjectStoryboard in Frameworks */ = {isa = PBXBuildFile; productRef = C42B61392AE0F0F700C9A120 /* SwinjectStoryboard */; };
 		C45FC81F2ADF7DD8004D863C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC81E2ADF7DD8004D863C /* AppDelegate.swift */; };
 		C45FC8212ADF7DD8004D863C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8202ADF7DD8004D863C /* SceneDelegate.swift */; };
-		C45FC8232ADF7DD8004D863C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8222ADF7DD8004D863C /* ViewController.swift */; };
+		C45FC8232ADF7DD8004D863C /* TopScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8222ADF7DD8004D863C /* TopScreenViewController.swift */; };
 		C45FC8262ADF7DD8004D863C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45FC8242ADF7DD8004D863C /* Main.storyboard */; };
 		C45FC8282ADF7DDA004D863C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45FC8272ADF7DDA004D863C /* Assets.xcassets */; };
 		C45FC82B2ADF7DDA004D863C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45FC8292ADF7DDA004D863C /* LaunchScreen.storyboard */; };
@@ -19,10 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C42B61332AE0ECF600C9A120 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
+		C42B61362AE0ED3E00C9A120 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		C45FC81B2ADF7DD8004D863C /* InventoryAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45FC81E2ADF7DD8004D863C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C45FC8202ADF7DD8004D863C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C45FC8222ADF7DD8004D863C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C45FC8222ADF7DD8004D863C /* TopScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenViewController.swift; sourceTree = "<group>"; };
 		C45FC8252ADF7DD8004D863C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C45FC8272ADF7DDA004D863C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C45FC82A2ADF7DDA004D863C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,12 +42,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42B613A2AE0F0F700C9A120 /* SwinjectStoryboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C42B61322AE0ECE200C9A120 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				C42B61332AE0ECF600C9A120 /* ProductsRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		C42B61352AE0ED3000C9A120 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C42B61362AE0ED3E00C9A120 /* Product.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		C45FC8122ADF7DD8004D863C = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +84,8 @@
 		C45FC81D2ADF7DD8004D863C /* InventoryAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C42B61352AE0ED3000C9A120 /* model */,
+				C42B61322AE0ECE200C9A120 /* repository */,
 				C4D835AE2ADFAA6500CCDF94 /* ViewController */,
 				C4D835AD2ADFAA5200CCDF94 /* Images */,
 				C4D835AC2ADFAA1A00CCDF94 /* View */,
@@ -95,7 +119,7 @@
 		C4D835AE2ADFAA6500CCDF94 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C45FC8222ADF7DD8004D863C /* ViewController.swift */,
+				C45FC8222ADF7DD8004D863C /* TopScreenViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -117,6 +141,7 @@
 			);
 			name = InventoryAppiOS;
 			packageProductDependencies = (
+				C42B61392AE0F0F700C9A120 /* SwinjectStoryboard */,
 			);
 			productName = InventoryAppiOS;
 			productReference = C45FC81B2ADF7DD8004D863C /* InventoryAppiOS.app */;
@@ -147,6 +172,7 @@
 			);
 			mainGroup = C45FC8122ADF7DD8004D863C;
 			packageReferences = (
+				C42B61382AE0F0F700C9A120 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */,
 			);
 			productRefGroup = C45FC81C2ADF7DD8004D863C /* Products */;
 			projectDirPath = "";
@@ -177,10 +203,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C45FC8232ADF7DD8004D863C /* ViewController.swift in Sources */,
+				C45FC8232ADF7DD8004D863C /* TopScreenViewController.swift in Sources */,
 				C45FC81F2ADF7DD8004D863C /* AppDelegate.swift in Sources */,
+				C42B61342AE0ECF600C9A120 /* ProductsRepository.swift in Sources */,
 				C45FC8342ADF80FE004D863C /* TopScreenProductsTableViewCell.swift in Sources */,
 				C45FC8212ADF7DD8004D863C /* SceneDelegate.swift in Sources */,
+				C42B61372AE0ED3E00C9A120 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C42B61382AE0F0F700C9A120 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/SwinjectStoryboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C42B61392AE0F0F700C9A120 /* SwinjectStoryboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C42B61382AE0F0F700C9A120 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */;
+			productName = SwinjectStoryboard;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C45FC8132ADF7DD8004D863C /* Project object */;
 }
