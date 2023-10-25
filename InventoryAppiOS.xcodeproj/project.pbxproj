@@ -21,6 +21,8 @@
 		C4A930D32AE0F5A500C1A012 /* DetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A930D22AE0F5A500C1A012 /* DetailScreenViewController.swift */; };
 		C4D835A72ADFA35F00CCDF94 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D835A62ADFA35F00CCDF94 /* apple.png */; };
 		C4D8997A2AE8AF22000F9659 /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D899792AE8AF22000F9659 /* CollectionExt.swift */; };
+		C4D8997C2AE8B232000F9659 /* TreasurerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D8997B2AE8B232000F9659 /* TreasurerRepository.swift */; };
+		C4D8997E2AE8B24F000F9659 /* Treasurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D8997D2AE8B24F000F9659 /* Treasurer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		C4A930D22AE0F5A500C1A012 /* DetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenViewController.swift; sourceTree = "<group>"; };
 		C4D835A62ADFA35F00CCDF94 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		C4D899792AE8AF22000F9659 /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
+		C4D8997B2AE8B232000F9659 /* TreasurerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasurerRepository.swift; sourceTree = "<group>"; };
+		C4D8997D2AE8B24F000F9659 /* Treasurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Treasurer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C42B61332AE0ECF600C9A120 /* ProductsRepository.swift */,
+				C4D8997B2AE8B232000F9659 /* TreasurerRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -65,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				C42B61362AE0ED3E00C9A120 /* Product.swift */,
+				C4D8997D2AE8B24F000F9659 /* Treasurer.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -220,8 +226,10 @@
 				C45FC8232ADF7DD8004D863C /* TopScreenViewController.swift in Sources */,
 				C4A930D32AE0F5A500C1A012 /* DetailScreenViewController.swift in Sources */,
 				C45FC81F2ADF7DD8004D863C /* AppDelegate.swift in Sources */,
+				C4D8997E2AE8B24F000F9659 /* Treasurer.swift in Sources */,
 				C4D8997A2AE8AF22000F9659 /* CollectionExt.swift in Sources */,
 				C42B61342AE0ECF600C9A120 /* ProductsRepository.swift in Sources */,
+				C4D8997C2AE8B232000F9659 /* TreasurerRepository.swift in Sources */,
 				C45FC8342ADF80FE004D863C /* TopScreenProductsTableViewCell.swift in Sources */,
 				C45FC8212ADF7DD8004D863C /* SceneDelegate.swift in Sources */,
 				C42B61372AE0ED3E00C9A120 /* Product.swift in Sources */,
