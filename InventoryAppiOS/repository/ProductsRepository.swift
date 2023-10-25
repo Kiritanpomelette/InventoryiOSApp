@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProductsRepository {
-    func getAllProducts() async -> [Product]
+    func getAllProducts() async throws -> [Product]
 }
 
 class FakeProductsRepository : ProductsRepository {
@@ -27,7 +27,7 @@ class FakeProductsRepository : ProductsRepository {
         }
         return tempProducts
     }()
-    func getAllProducts() async -> [Product] {
+    func getAllProducts() async throws -> [Product]{
         try! await Task.sleep(nanoseconds: UInt64(arc4random()) % 5_000_000_000)
         return products
     }

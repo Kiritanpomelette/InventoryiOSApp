@@ -15,22 +15,43 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     
     var repository: ProductsRepository?
-    
     var products: [Product] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+        indicator.startAnimating()
+        fetchData()
+    }
+    
+    @objc func fetchData(){
+        Task.detached{
+            do{
+                let products = try await self.repository?.getAllProducts() ?? []
+                await self.updateUI(products: products)
+            }catch{
+                print("Error fetching products: \(error)")
+            }
+        }
+    }
+    func setupTableView(){
+        tableView.register(UINib(nibName: "TopScreenProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "TopScreenProductsTableViewCell")
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //セルの定義
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "TopScreenProductsTableViewCell",
             for: indexPath
         ) as! TopScreenProductsTableViewCell
         
-        let product = products[indexPath.row]
-        
-        cell.bind(product: product)
+        cell.bind(product: products[indexPath.row])
 
         return cell
     }
@@ -41,37 +62,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print(products[indexPath.row])
     }
     
-    @objc func refresh(sender: Any?){
-        Task.detached{
-            let products = await self.repository!.getAllProducts()
-            await self.load(products: products)
-        }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        indicator.startAnimating()
-        
-        tableView.register(UINib(nibName: "TopScreenProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "TopScreenProductsTableViewCell")
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-        
-    
-        refresh(sender: nil)
-    }
     @MainActor
-    func load(products: [Product]){
+    func updateUI(products: [Product]){
         self.products = products
         tableView.reloadData()
         indicator.stopAnimating()
         tableView.refreshControl?.endRefreshing()
     }
-    
-    
-    
-    
 }
 
 extension SwinjectStoryboard {
