@@ -116,7 +116,8 @@ extension SwinjectStoryboard {
             v.treasurerRepository = r.resolve(TreasurerRepository.self)
         }
         defaultContainer.storyboardInitCompleted(DetailScreenViewContorller.self){ r,v in
-            v.repository = r.resolve(ProductsRepository.self)
+            v.productsRepository = r.resolve(ProductsRepository.self)
+            v.treasuresRepository = r.resolve(TreasurerRepository.self)
         }
     }
 }

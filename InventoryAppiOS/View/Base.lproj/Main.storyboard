@@ -181,6 +181,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-Eg-eY3">
                                 <rect key="frame" x="8" y="415.66666666666674" width="377" height="418.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jxe-f4-eab" id="lWy-Sh-4DI"/>
+                                    <outlet property="delegate" destination="jxe-f4-eab" id="3fl-b8-zYZ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FP6-5n-zB3"/>
@@ -212,6 +216,7 @@
                     <connections>
                         <outlet property="navigationBarTitle" destination="X4s-TL-h2q" id="h9v-9c-bht"/>
                         <outlet property="navitagionBar" destination="Abn-lm-IYf" id="I0d-57-7pM"/>
+                        <outlet property="tableView" destination="YhT-Eg-eY3" id="Q42-FD-tiP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Se8-HI-zIn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

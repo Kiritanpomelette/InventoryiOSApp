@@ -25,7 +25,7 @@ class FakeTreasurerRepository: TreasurerRepository {
             let products = try! await repository.getAllProducts()
             var id = 1
             products.forEach { i in
-                for index in (1...10){
+                for index in (1...25){
                     //出納数
                     let treasureCount = Int.random(in: -50..<51)
                     let interval: TimeInterval = (index == 1) ? TimeInterval(0) : TimeInterval(Int64.random(in: borderDate..<0))
@@ -48,7 +48,7 @@ class FakeTreasurerRepository: TreasurerRepository {
     func getAllTreasurer() async throws -> [Treasurer] {
         do{
             await initTask?.value
-            try await Task.sleep(nanoseconds: UInt64.random(in: 0_500_000_000..<1_500_000_000))
+            try await Task.sleep(nanoseconds: UInt64.random(in: 0_500_000_000..<1_000_000_000))
             return treasurers
         }catch{
             print("Error")

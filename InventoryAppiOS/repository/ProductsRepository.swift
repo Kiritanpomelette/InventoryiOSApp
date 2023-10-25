@@ -29,7 +29,7 @@ class FakeProductsRepository : ProductsRepository {
         return tempProducts
     }()
     func getAllProducts() async throws -> [Product]{
-        try! await Task.sleep(nanoseconds: UInt64(arc4random()) % 5_000_000_000)
+        try! await Task.sleep(nanoseconds: UInt64(arc4random()) % 1_000_000_000)
         return products
     }
     func getProduct(id: Int) async throws -> Product? {
