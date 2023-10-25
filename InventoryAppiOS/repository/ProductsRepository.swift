@@ -13,7 +13,7 @@ protocol ProductsRepository {
 
 class FakeProductsRepository : ProductsRepository {
     var products: [Product] = {
-        let fakeTitles = ["りんご","らっぱ","ぱんつ","つみき","あきたこまち","つや姫","コシヒカリ"]
+        let fakeTitles = ["りんご","らっぱ","ぱんつ","つみき","あきたこまち Long Version Hello World","つや姫","コシヒカリ"]
         let fakeProducingAreas = ["北海道","東京","沖縄"]
         var tempProducts: [Product] = []
         

@@ -31,15 +31,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let product = products[indexPath.row]
         
         cell.bind(product: product)
-        cell.detailButton.addTarget(self, action: #selector(onDetailButtonTap(sender:)), for: .touchUpInside)
-        
 
         return cell
     }
     
-    @objc func onDetailButtonTap(sender:UIButton){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "openDetail", sender: nil)
-        print(sender.tag)
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(products[indexPath.row])
     }
     
     @objc func refresh(sender: Any?){
