@@ -56,7 +56,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-G8-bNP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-G8-bNP">
                                                     <rect key="frame" x="29" y="-4.5" width="146.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -77,7 +77,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8y-J4-SXY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8y-J4-SXY">
                                                     <rect key="frame" x="29" y="-4.5" width="146.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
@@ -124,11 +124,11 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="currentCount" destination="x8y-J4-SXY" id="NmI-mV-qPs"/>
+                <outlet property="currentCountLabel" destination="x8y-J4-SXY" id="NmI-mV-qPs"/>
                 <outlet property="desc" destination="njH-9T-izQ" id="4SW-0k-m8e"/>
                 <outlet property="editButton" destination="XGL-bq-h7H" id="R5D-Fs-ZVr"/>
                 <outlet property="title" destination="JOj-sn-WjC" id="yPi-Qj-VwW"/>
-                <outlet property="todayCount" destination="zEV-G8-bNP" id="YQl-R6-xr9"/>
+                <outlet property="todayCountLabel" destination="zEV-G8-bNP" id="YQl-R6-xr9"/>
             </connections>
             <point key="canvasLocation" x="-296" y="-770"/>
         </view>

@@ -94,6 +94,7 @@
 		C45FC81D2ADF7DD8004D863C /* InventoryAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				C4D8997F2AE8BD29000F9659 /* usecase */,
 				C4D899782AE8AF15000F9659 /* ext */,
 				C42B61352AE0ED3000C9A120 /* model */,
 				C42B61322AE0ECE200C9A120 /* repository */,
@@ -142,6 +143,13 @@
 				C4D899792AE8AF22000F9659 /* CollectionExt.swift */,
 			);
 			path = ext;
+			sourceTree = "<group>";
+		};
+		C4D8997F2AE8BD29000F9659 /* usecase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = usecase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

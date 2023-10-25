@@ -14,8 +14,12 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var repository: ProductsRepository?
+    var productsRepository: ProductsRepository?
+    var treasurerRepository: TreasurerRepository?
+    
     var products: [Product] = []
+    var treasurers: [Treasurer] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +31,12 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
     @objc func fetchData(){
         Task.detached{
             do{
-                let products = try await self.repository?.getAllProducts() ?? []
-                await self.updateUI(products: products)
+                print("Loading Products...")
+                let products = try await self.productsRepository?.getAllProducts() ?? []
+                print("Loading Treasurers...")
+                let treasurers = try await self.treasurerRepository?.getAllTreasurer() ?? []
+                await self.updateUI(products: products,treasurers: treasurers)
+                print("Done!!")
             }catch{
                 print("Error fetching products: \(error)")
             }
@@ -51,7 +59,14 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
             for: indexPath
         ) as! TopScreenProductsTableViewCell
         
-        cell.bind(product: products[indexPath.row])
+        let product = products[indexPath.row]
+        
+        let filteredTreasurers = treasurers.filter { treasurer in
+            treasurer.productId == product.id
+        }
+        
+        cell.bind(product: product)
+        cell.setCount(todayCount: filteredTreasurers.getTodayCount(), currentCount: filteredTreasurers.getCurrentCount())
         
         return cell
     }
@@ -60,10 +75,11 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         performSegue(withIdentifier: "openDetail", sender: nil)
         //tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+        
     @MainActor
-    func updateUI(products: [Product]){
+    func updateUI(products: [Product],treasurers: [Treasurer]){
         self.products = products
+        self.treasurers = treasurers
         tableView.reloadData()
         indicator.stopAnimating()
         tableView.refreshControl?.endRefreshing()
@@ -90,16 +106,17 @@ extension SwinjectStoryboard {
         defaultContainer.register(ProductsRepository.self){ _ in
             productsRepository
         }
+        defaultContainer.register(TreasurerRepository.self) { _ in
+            treasurerRepository
+        }
+        
+        
         defaultContainer.storyboardInitCompleted(TopScreenViewController.self){ r,v in
-#if DEBUG
-            v.repository = r.resolve(ProductsRepository.self)
-#endif
+            v.productsRepository = r.resolve(ProductsRepository.self)
+            v.treasurerRepository = r.resolve(TreasurerRepository.self)
         }
         defaultContainer.storyboardInitCompleted(DetailScreenViewContorller.self){ r,v in
-#if DEBUG
             v.repository = r.resolve(ProductsRepository.self)
-#endif
-            
         }
     }
 }
