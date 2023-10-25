@@ -9,7 +9,7 @@ import UIKit
 import Swinject
 import SwinjectStoryboard
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
@@ -52,14 +52,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         ) as! TopScreenProductsTableViewCell
         
         cell.bind(product: products[indexPath.row])
-
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "openDetail", sender: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
-        print(products[indexPath.row])
+        //tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @MainActor
@@ -69,19 +68,38 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         indicator.stopAnimating()
         tableView.refreshControl?.endRefreshing()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openDetail" {
+            guard let selectedRow = tableView.indexPathForSelectedRow?.row,
+                  let selectedProduct = products[safe: selectedRow] else {
+                return
+            }
+            if let nextVC = segue.destination as? DetailScreenViewContorller {
+                nextVC.productId = selectedProduct.id
+            }
+        }
+    }
 }
 
 extension SwinjectStoryboard {
     class public func setup() {
-        defaultContainer.register(ProductsRepository.self){ _ in
-            FakeProductsRepository()
-        }
-        defaultContainer.storyboardInitCompleted(ViewController.self){ r,v in
-            #if DEBUG
-            v.repository = r.resolve(ProductsRepository.self)
-            #endif
-        }
+        let productsRepository: ProductsRepository = FakeProductsRepository()
         
+        defaultContainer.register(ProductsRepository.self){ _ in
+            productsRepository
+        }
+        defaultContainer.storyboardInitCompleted(TopScreenViewController.self){ r,v in
+#if DEBUG
+            v.repository = r.resolve(ProductsRepository.self)
+#endif
+        }
+        defaultContainer.storyboardInitCompleted(DetailScreenViewContorller.self){ r,v in
+#if DEBUG
+            v.repository = r.resolve(ProductsRepository.self)
+#endif
+            
+        }
     }
 }
 

@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProductsRepository {
     func getAllProducts() async throws -> [Product]
+    func getProduct(id: Int) async throws -> Product?
 }
 
 class FakeProductsRepository : ProductsRepository {
@@ -30,5 +31,8 @@ class FakeProductsRepository : ProductsRepository {
     func getAllProducts() async throws -> [Product]{
         try! await Task.sleep(nanoseconds: UInt64(arc4random()) % 5_000_000_000)
         return products
+    }
+    func getProduct(id: Int) async throws -> Product? {
+        return products.first(where: { $0.id == id })
     }
 }
