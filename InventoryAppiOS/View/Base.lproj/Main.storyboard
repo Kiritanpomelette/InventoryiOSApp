@@ -214,9 +214,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Hyu-Ae-WBg"/>
                     <connections>
+                        <outlet property="currentCount" destination="NHP-gW-UYs" id="GUD-eD-5Qz"/>
+                        <outlet property="monthCountLabel" destination="0cs-EF-nnW" id="DhG-r2-xjY"/>
                         <outlet property="navigationBarTitle" destination="X4s-TL-h2q" id="h9v-9c-bht"/>
                         <outlet property="navitagionBar" destination="Abn-lm-IYf" id="I0d-57-7pM"/>
                         <outlet property="tableView" destination="YhT-Eg-eY3" id="Q42-FD-tiP"/>
+                        <outlet property="todayCountLabel" destination="E84-se-kOa" id="hga-a3-EfH"/>
+                        <outlet property="weekCountLabel" destination="d2l-cN-SJv" id="PyW-tK-BiE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Se8-HI-zIn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

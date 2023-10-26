@@ -19,7 +19,7 @@ class FakeTreasurerRepository: TreasurerRepository {
     
     init(repository: ProductsRepository){
         let currentDate = Date()
-        let borderDate:Int64 = -1*60*60*24*31*3
+        let borderDate:Int64 = -1*60*60*24*(31+10)
         
         initTask = Task{
             let products = try! await repository.getAllProducts()

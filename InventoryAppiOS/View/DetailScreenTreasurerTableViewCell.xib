@@ -4,42 +4,58 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="DetailScreenTreasurerTableViewCell" customModule="InventoryAppiOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="146" id="KGk-i7-Jjw" customClass="DetailScreenTreasurerTableViewCell" customModule="InventoryAppiOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="418" height="146"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+                <rect key="frame" x="0.0" y="0.0" width="418" height="146"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyK-Bi-23I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="firstBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oyK-Bi-23I">
+                        <rect key="frame" x="0.0" y="4" width="418" height="138"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVs-oh-xwd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023/09/15 13:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhi-cl-huA">
+                                <rect key="frame" x="0.0" y="15.333333333333332" width="205" height="14.333333333333332"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20個" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-ao-juY">
+                                <rect key="frame" x="213" y="0.0" width="205" height="138"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="EMh-ao-juY" secondAttribute="height" id="wBx-u9-znz"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oyK-Bi-23I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ETl-fX-ZCd"/>
                     <constraint firstAttribute="trailing" secondItem="oyK-Bi-23I" secondAttribute="trailing" id="M8f-TT-4SR"/>
-                    <constraint firstItem="oyK-Bi-23I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PgO-AE-oEI"/>
-                    <constraint firstAttribute="bottom" secondItem="oyK-Bi-23I" secondAttribute="bottom" id="rel-If-JlU"/>
+                    <constraint firstItem="oyK-Bi-23I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="PgO-AE-oEI"/>
+                    <constraint firstAttribute="bottom" secondItem="oyK-Bi-23I" secondAttribute="bottom" constant="4" id="rel-If-JlU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="titleLabel" destination="IVs-oh-xwd" id="hzx-9b-D1a"/>
+                <outlet property="countLabel" destination="EMh-ao-juY" id="SW2-c1-0rg"/>
+                <outlet property="dateLabel" destination="Jhi-cl-huA" id="jHi-Ny-x4E"/>
             </connections>
-            <point key="canvasLocation" x="74.809160305343511" y="-15.845070422535212"/>
+            <point key="canvasLocation" x="131.29770992366412" y="-43.661971830985919"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

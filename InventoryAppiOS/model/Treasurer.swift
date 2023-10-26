@@ -38,5 +38,39 @@ extension [Treasurer] {
         }
         return sum
     }
+    
+    func getThisWeekCount() -> Int {
+        
+        var sum = 0
+        let today = Date()
+        let calendar = Calendar.current
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear,.weekOfYear], from: today))!
+        let endOfWeek = calendar.date(byAdding: DateComponents(day: 7),to: startOfWeek)!
+        for treasurer in self {
+            if treasurer.modifyDate >= startOfWeek && treasurer.modifyDate < endOfWeek {
+                sum += treasurer.count
+            }
+        }
+        
+        return sum
+    }
+    
+    func getThisMonthCount() -> Int {
+        var sum = 0
+        let today = Date()
+        let calendar = Calendar.current
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))!
+        
+        // Calculate the start of the next month
+        let nextMonth = calendar.date(byAdding: DateComponents(month: 1), to: startOfMonth)!
+        
+        for treasurer in self {
+            if treasurer.modifyDate >= startOfMonth && treasurer.modifyDate < nextMonth {
+                sum += treasurer.count
+            }
+        }
+        
+        return sum
+    }
 }
 
