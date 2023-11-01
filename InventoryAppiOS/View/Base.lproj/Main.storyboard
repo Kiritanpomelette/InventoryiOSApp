@@ -79,6 +79,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zly-mS-BGu"/>
+                    <connections>
+                        <outlet property="currentInput" destination="9Il-pq-APV" id="ZlR-ec-olW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cx3-mY-HFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

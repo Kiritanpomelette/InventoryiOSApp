@@ -10,6 +10,7 @@ import Foundation
 protocol TreasurerRepository{
     func getAllTreasurer() async throws -> [Treasurer]
     func getTreasurer(productId: Int) async throws -> [Treasurer]
+    func insertTreasurer(productId: Int,managerId: Int,count: Int) async throws
 }
 
 class FakeTreasurerRepository: TreasurerRepository {
@@ -71,4 +72,22 @@ class FakeTreasurerRepository: TreasurerRepository {
             return []
         }
     }
+    
+    func insertTreasurer(productId: Int, managerId: Int, count: Int) async throws {
+        do {
+            await initTask?.value
+            try await Task.sleep(nanoseconds: UInt64.random(in: 0_500_000_000..<1_500_000_000))
+
+            let newTreasurerData = Treasurer(
+                id: Int(arc4random()),
+                productId: productId,
+                managerId: managerId,
+                modifyDate: Date(),
+                count: count
+            )
+            
+            treasurers.append(newTreasurerData)
+        }
+    }
+    
 }
