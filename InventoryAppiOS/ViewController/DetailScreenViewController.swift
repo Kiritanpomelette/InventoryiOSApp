@@ -57,24 +57,22 @@ class DetailScreenViewContorller: UIViewController,UITableViewDelegate,UITableVi
     func fetchData(){
         Task.detached{
             do{
-                guard let productId = await self.productId else {
-                    return
-                }
-                guard let product = try await self.productsRepository?.getProduct(id: productId) else {
-                    return
-                }
-                guard let treasures = try await self.treasuresRepository?.getTreasurer(productId: product.id) else {
+                guard let productId = await self.productId,
+                      let product = try await self.productsRepository?.getProduct(id: productId),
+                      let treasures = try await self.treasuresRepository?.getTreasurer(productId: product.id)
+                else {
+                    print("フェッチに失敗しました")
                     return
                 }
                 await self.updateUI(product: product,treasurers: treasures)
             }catch{
-                
+                print("Error: \(error)")
             }
         }
     }
     
     @MainActor
-    func updateUI(product: Product?,treasurers: [Treasurer]){
+    func updateUI(product: Product,treasurers: [Treasurer]){
         self.product = product
         self.treasures = treasurers.sorted(by: { i, n in
             i.modifyDate < n.modifyDate
@@ -89,7 +87,7 @@ class DetailScreenViewContorller: UIViewController,UITableViewDelegate,UITableVi
         
         
         tableView.reloadData()
-        title = product?.name
+        title = product.name
     }
 
 }
