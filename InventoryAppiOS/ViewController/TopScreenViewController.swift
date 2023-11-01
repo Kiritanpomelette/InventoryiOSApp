@@ -23,6 +23,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "在庫一覧"
         setupTableView()
         indicator.startAnimating()
         fetchData()

@@ -39,9 +39,6 @@ class DetailScreenViewContorller: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var weekCountLabel: UILabel!
     @IBOutlet weak var monthCountLabel: UILabel!
     
-    @IBOutlet weak var navigationBarTitle: UINavigationItem!
-    @IBOutlet weak var navitagionBar: UINavigationBar!
-    
     var product: Product?
     var productId: Int?
     var productsRepository: ProductsRepository?
@@ -92,7 +89,7 @@ class DetailScreenViewContorller: UIViewController,UITableViewDelegate,UITableVi
         
         
         tableView.reloadData()
-        navigationBarTitle.title = product?.name
+        title = product?.name
     }
 
 }
