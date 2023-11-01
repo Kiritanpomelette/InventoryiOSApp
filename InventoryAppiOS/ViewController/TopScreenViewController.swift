@@ -78,7 +78,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         performSegue(withIdentifier: "openDetail", sender: nil)
         //tableView.deselectRow(at: indexPath, animated: true)
     }
-        
+    
     @MainActor
     func updateUI(products: [Product],treasurers: [Treasurer]){
         self.products = products
@@ -101,12 +101,14 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
             guard let sender = sender as? UIButton else{
                 return
             }
-            print(sender.tag)
+            if let nextVC = segue.destination as? EditScreenViewController {
+                nextVC.productId = sender.tag
+            }
         }
     }
     
     @objc func onEditPress(_ sender: Any?){
-        performSegue(withIdentifier: "edit", sender: nil)
+        performSegue(withIdentifier: "edit", sender: sender)
     }
 }
 
@@ -130,6 +132,10 @@ extension SwinjectStoryboard {
         defaultContainer.storyboardInitCompleted(DetailScreenViewContorller.self){ r,v in
             v.productsRepository = r.resolve(ProductsRepository.self)
             v.treasuresRepository = r.resolve(TreasurerRepository.self)
+        }
+        defaultContainer.storyboardInitCompleted(EditScreenViewController.self){r,v in
+            v.productsRepository = r.resolve(ProductsRepository.self)
+            v.treasurerRepository = r.resolve(TreasurerRepository.self)
         }
     }
 }
