@@ -67,6 +67,8 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         
         cell.bind(product: product)
+        cell.editButton.addTarget(self, action: #selector(onEditPress(_:)), for: .touchDown)
+        cell.tag = product.id
         cell.setCount(todayCount: filteredTreasurers.getTodayCount(), currentCount: filteredTreasurers.getCurrentCount())
         
         return cell
@@ -95,7 +97,16 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
             if let nextVC = segue.destination as? DetailScreenViewContorller {
                 nextVC.productId = selectedProduct.id
             }
+        }else if segue.identifier == "edit" {
+            guard let sender = sender as? UIButton else{
+                return
+            }
+            print(sender.tag)
         }
+    }
+    
+    @objc func onEditPress(_ sender: Any?){
+        performSegue(withIdentifier: "edit", sender: nil)
     }
 }
 

@@ -25,6 +25,7 @@ class TopScreenProductsTableViewCell: UITableViewCell {
 
         title.text = product.name
         desc.text = product.memo
+        
     }
     
     func setCount(todayCount: Int,currentCount: Int){
