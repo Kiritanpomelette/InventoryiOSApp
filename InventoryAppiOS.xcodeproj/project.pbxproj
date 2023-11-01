@@ -11,6 +11,7 @@
 		C42B61372AE0ED3E00C9A120 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B61362AE0ED3E00C9A120 /* Product.swift */; };
 		C42B613A2AE0F0F700C9A120 /* SwinjectStoryboard in Frameworks */ = {isa = PBXBuildFile; productRef = C42B61392AE0F0F700C9A120 /* SwinjectStoryboard */; };
 		C456CFDF2AF1EC83006F409C /* EditScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C456CFDE2AF1EC83006F409C /* EditScreenViewController.swift */; };
+		C456CFE22AF21893006F409C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C456CFE12AF21893006F409C /* FSCalendar */; };
 		C45FC81F2ADF7DD8004D863C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC81E2ADF7DD8004D863C /* AppDelegate.swift */; };
 		C45FC8212ADF7DD8004D863C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8202ADF7DD8004D863C /* SceneDelegate.swift */; };
 		C45FC8232ADF7DD8004D863C /* TopScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45FC8222ADF7DD8004D863C /* TopScreenViewController.swift */; };
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C42B613A2AE0F0F700C9A120 /* SwinjectStoryboard in Frameworks */,
+				C456CFE22AF21893006F409C /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +181,7 @@
 			name = InventoryAppiOS;
 			packageProductDependencies = (
 				C42B61392AE0F0F700C9A120 /* SwinjectStoryboard */,
+				C456CFE12AF21893006F409C /* FSCalendar */,
 			);
 			productName = InventoryAppiOS;
 			productReference = C45FC81B2ADF7DD8004D863C /* InventoryAppiOS.app */;
@@ -210,6 +213,7 @@
 			mainGroup = C45FC8122ADF7DD8004D863C;
 			packageReferences = (
 				C42B61382AE0F0F700C9A120 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */,
+				C456CFE02AF21893006F409C /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = C45FC81C2ADF7DD8004D863C /* Products */;
 			projectDirPath = "";
@@ -485,6 +489,14 @@
 				minimumVersion = 2.2.3;
 			};
 		};
+		C456CFE02AF21893006F409C /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -492,6 +504,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C42B61382AE0F0F700C9A120 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */;
 			productName = SwinjectStoryboard;
+		};
+		C456CFE12AF21893006F409C /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C456CFE02AF21893006F409C /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

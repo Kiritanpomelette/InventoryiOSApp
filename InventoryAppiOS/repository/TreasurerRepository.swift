@@ -26,7 +26,7 @@ class FakeTreasurerRepository: TreasurerRepository {
             let products = try! await repository.getAllProducts()
             var id = 1
             products.forEach { i in
-                for index in (1...25){
+                for index in (1...100){
                     //出納数
                     let treasureCount = Int.random(in: -50..<51)
                     let interval: TimeInterval = (index == 1) ? TimeInterval(0) : TimeInterval(Int64.random(in: borderDate..<0))
