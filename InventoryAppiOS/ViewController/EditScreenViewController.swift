@@ -16,6 +16,8 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var currentCountLabel: UILabel!
     @IBOutlet weak var currentInput: UITextField!
     
+    var vcDelegate: TopScreenViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,6 +69,7 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
                 }
                 try await treasurerRepository.insertTreasurer(productId: productId, managerId: 1, count: Int(currentCount))
                 await self.navigationController?.popViewController(animated: true)
+                await self.vcDelegate?.onBack()
             }
         }
     }

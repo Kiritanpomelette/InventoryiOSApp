@@ -9,7 +9,12 @@ import UIKit
 import Swinject
 import SwinjectStoryboard
 
-class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+protocol TopScreenViewControllerDelegate {
+    func onBack()
+}
+
+class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TopScreenViewControllerDelegate {
     
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
@@ -26,10 +31,12 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         title = "在庫一覧"
         setupTableView()
         indicator.startAnimating()
+
         fetchData()
     }
     
     @objc func fetchData(){
+        tableView.isHidden = true
         Task.detached{
             do{
                 print("Loading Products...")
@@ -86,6 +93,8 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.reloadData()
         indicator.stopAnimating()
         tableView.refreshControl?.endRefreshing()
+        tableView.isHidden = false
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,6 +112,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
             }
             if let nextVC = segue.destination as? EditScreenViewController {
                 nextVC.productId = sender.tag
+                nextVC.vcDelegate = self
             }
         }
     }
@@ -110,7 +120,17 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
     @objc func onEditPress(_ sender: Any?){
         performSegue(withIdentifier: "edit", sender: sender)
     }
+    
+    @MainActor
+    func onBack() {
+        Task{
+            indicator.startAnimating()
+            fetchData()
+        }
+    }
 }
+
+
 
 extension SwinjectStoryboard {
     class public func setup() {
