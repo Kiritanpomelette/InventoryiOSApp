@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditScreenViewController: UIViewController {
+class EditScreenViewController: UIViewController ,UITextFieldDelegate{
     
     var productId: Int?
     var productsRepository: ProductsRepository?
@@ -63,6 +63,25 @@ class EditScreenViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 数字と "-" のセットを作成
+        let allowedCharacterSet = CharacterSet(charactersIn: "0123456789-")
+
+        // 入力文字列が許可された文字だけで構成されているかチェック
+        for scalar in string.unicodeScalars {
+            if !allowedCharacterSet.contains(UnicodeScalar(scalar.value)!) {
+                return false
+            }
+        }
+
+        // 最初の文字が "-" の場合、それが唯一の "-" であることを確認
+        if string == "-" {
+            return !(textField.text?.contains("-") ?? false)
+        }
+
+        return true
     }
     
     
