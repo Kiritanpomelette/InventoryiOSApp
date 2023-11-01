@@ -13,13 +13,16 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
     var productsRepository: ProductsRepository?
     var treasurerRepository: TreasurerRepository?
     
+    @IBOutlet weak var currentCountLabel: UILabel!
     @IBOutlet weak var currentInput: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         fetchData()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: .done, target: self, action: #selector(insertAction))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         // Do any additional setup after loading the view.
     }
@@ -34,7 +37,10 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
                 guard let product = try await self.productsRepository?.getProduct(id: self.productId!) else {
                     return
                 }
-                await self.updateUI(product: product)
+                guard let currentCount = try await self.treasurerRepository?.getTreasurer(productId: self.productId!).getCurrentCount() else {
+                    return
+                }
+                await self.updateUI(product: product, currentCount: currentCount)
                 
             }catch {
                 print(error)
@@ -43,8 +49,10 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
     }
     
     @MainActor
-    func updateUI(product: Product){
+    func updateUI(product: Product,currentCount: Int){
         title = product.name
+        currentCountLabel.text = String(currentCount)
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     @objc func insertAction(){
@@ -59,8 +67,6 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
                 }
                 try await treasurerRepository.insertTreasurer(productId: productId, managerId: 1, count: Int(currentCount))
                 await self.navigationController?.popViewController(animated: true)
-                
-                
             }
         }
     }
