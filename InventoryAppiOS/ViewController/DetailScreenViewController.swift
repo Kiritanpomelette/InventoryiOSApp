@@ -25,6 +25,7 @@ class DetailScreenViewContorller: UIViewController,FSCalendarDelegateAppearance 
     @IBOutlet weak var weekCountLabel: UILabel!
     @IBOutlet weak var monthCountLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var detail: UILabel!
     
     var product: Product?
     var productId: Int?
@@ -78,6 +79,7 @@ class DetailScreenViewContorller: UIViewController,FSCalendarDelegateAppearance 
         todayCountLabel.text = String(treasurers.getTodayCount())
         weekCountLabel.text = String(treasurers.getThisWeekCount())
         monthCountLabel.text = String(treasurers.getThisMonthCount())
+        detail.text = product.memo ?? "この商品にメモはありません"
         
         
         
