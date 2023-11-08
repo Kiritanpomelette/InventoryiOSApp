@@ -60,33 +60,31 @@ class DetailScreenViewContorller: UIViewController,FSCalendarDelegateAppearance 
                     print("フェッチに失敗しました")
                     return
                 }
-                await self.updateUI(product: product,treasurers: treasures)
+                let sortedTreasures = treasures.sorted(by: { i, n in
+                    i.modifyDate < n.modifyDate
+                })
+                
+                await MainActor.run {
+                    self.treasures = sortedTreasures
+                    self.product = product
+
+                    print("UpdatingUI... \(String(describing: product))")
+                    
+                    self.currentCount.text = String(sortedTreasures.getCurrentCount())
+                    self.todayCountLabel.text = String(sortedTreasures.getTodayCount())
+                    self.weekCountLabel.text = String(sortedTreasures.getThisWeekCount())
+                    self.monthCountLabel.text = String(sortedTreasures.getThisMonthCount())
+                    self.detail.text = product.memo ?? "この商品にメモはありません"
+                    
+                    self.calendar.reloadData()
+                    self.title = product.name
+                }
             }catch{
                 print("Error: \(error)")
             }
         }
     }
     
-    @MainActor
-    func updateUI(product: Product,treasurers: [Treasurer]){
-        self.product = product
-        self.treasures = treasurers.sorted(by: { i, n in
-            i.modifyDate < n.modifyDate
-        })
-        print("UpdatingUI... \(String(describing: product))")
-        
-        currentCount.text = String(treasurers.getCurrentCount())
-        todayCountLabel.text = String(treasurers.getTodayCount())
-        weekCountLabel.text = String(treasurers.getThisWeekCount())
-        monthCountLabel.text = String(treasurers.getThisMonthCount())
-        detail.text = product.memo ?? "この商品にメモはありません"
-        
-        
-        
-        //tableView.reloadData()
-        calendar.reloadData()
-        title = product.name
-    }
     
     let subViewTag = arc4random()
     

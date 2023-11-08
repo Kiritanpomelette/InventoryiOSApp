@@ -31,7 +31,6 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         title = "在庫一覧"
         setupTableView()
         indicator.startAnimating()
-
         fetchData()
     }
     
@@ -43,7 +42,15 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
                 let products = try await self.productsRepository?.getAllProducts() ?? []
                 print("Loading Treasurers...")
                 let treasurers = try await self.treasurerRepository?.getAllTreasurer() ?? []
-                await self.updateUI(products: products,treasurers: treasurers)
+                
+                await MainActor.run {
+                    self.products = products
+                    self.treasurers = treasurers
+                    self.tableView.reloadData()
+                    self.indicator.stopAnimating()
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.tableView.isHidden = false
+                }
                 print("Done!!")
             }catch{
                 print("Error fetching products: \(error)")
@@ -84,17 +91,6 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "openDetail", sender: nil)
         //tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @MainActor
-    func updateUI(products: [Product],treasurers: [Treasurer]){
-        self.products = products
-        self.treasurers = treasurers
-        tableView.reloadData()
-        indicator.stopAnimating()
-        tableView.refreshControl?.endRefreshing()
-        tableView.isHidden = false
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

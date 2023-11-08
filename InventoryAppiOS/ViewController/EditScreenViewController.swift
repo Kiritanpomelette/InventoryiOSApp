@@ -42,20 +42,19 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
                 guard let currentCount = try await self.treasurerRepository?.getTreasurer(productId: self.productId!).getCurrentCount() else {
                     return
                 }
-                await self.updateUI(product: product, currentCount: currentCount)
+                
+                await MainActor.run {
+                    self.title = product.name
+                    self.currentCountLabel.text = String(currentCount)
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                }
                 
             }catch {
                 print(error)
             }
         }
     }
-    
-    @MainActor
-    func updateUI(product: Product,currentCount: Int){
-        title = product.name
-        currentCountLabel.text = String(currentCount)
-        navigationItem.rightBarButtonItem?.isEnabled = true
-    }
+
     
     @objc func insertAction(){
         navigationItem.rightBarButtonItem?.isEnabled = false
