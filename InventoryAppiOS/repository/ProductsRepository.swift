@@ -21,6 +21,7 @@ class ProductsRepositoryImpl : ProductsRepository {
     func getProduct(id: Int) async throws -> Product? {
         let url = URL(string: "https://n3.miyayu.xyz/InventoryServer-0.0.1-SNAPSHOT-plain/products/selectID?id=\(id)")!
         let (data,_) = try! await URLSession.shared.data(from: url)
+        print(data)
         return try! JSONDecoder().decode(Product.self, from: data)
     }
 }

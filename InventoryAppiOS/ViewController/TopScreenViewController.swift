@@ -82,6 +82,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         cell.bind(product: product)
         cell.editButton.addTarget(self, action: #selector(onEditPress(_:)), for: .touchDown)
+        cell.editButton.tag = product.id
         cell.tag = product.id
         cell.setCount(todayCount: filteredTreasurers.getTodayCount(), currentCount: filteredTreasurers.getCurrentCount())
         
@@ -107,6 +108,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
                 return
             }
             if let nextVC = segue.destination as? EditScreenViewController {
+                print("TAG: \(sender.tag)")
                 nextVC.productId = sender.tag
                 nextVC.vcDelegate = self
             }
@@ -131,7 +133,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
 extension SwinjectStoryboard {
     class public func setup() {
         let productsRepository: ProductsRepository = ProductsRepositoryImpl()
-        let treasurerRepository: TreasurerRepository = FakeTreasurerRepository(repository: productsRepository)
+        let treasurerRepository: TreasurerRepository = TreasurerRepositoryImpl()
         
         defaultContainer.register(ProductsRepository.self){ _ in
             productsRepository

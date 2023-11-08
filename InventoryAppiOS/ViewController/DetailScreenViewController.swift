@@ -61,7 +61,7 @@ class DetailScreenViewContorller: UIViewController,FSCalendarDelegateAppearance 
                     return
                 }
                 let sortedTreasures = treasures.sorted(by: { i, n in
-                    i.modifyDate < n.modifyDate
+                    i.date < n.date
                 })
                 
                 await MainActor.run {
@@ -99,7 +99,7 @@ class DetailScreenViewContorller: UIViewController,FSCalendarDelegateAppearance 
         var input = 0
         
         treasures?.forEach { treasurer in
-            if areDatesOnSameDay(date1: date, date2: treasurer.modifyDate){
+            if areDatesOnSameDay(date1: date, date2: treasurer.date){
                 if(treasurer.count > 0){
                     input += treasurer.count
                 }else{

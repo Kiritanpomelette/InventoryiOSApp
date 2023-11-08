@@ -13,6 +13,30 @@ protocol TreasurerRepository{
     func insertTreasurer(productId: Int,managerId: Int,count: Int) async throws
 }
 
+class TreasurerRepositoryImpl: TreasurerRepository {
+    func getAllTreasurer() async throws -> [Treasurer] {
+        let url = URL(string: "https://n3.miyayu.xyz/InventoryServer-0.0.1-SNAPSHOT-plain/treasurer")!
+        let (data,_) = try! await URLSession.shared.data(from: url)
+        return try! Treasurer.getDecoder().decode([Treasurer].self, from: data)
+    }
+    func getTreasurer(productId: Int) async throws -> [Treasurer] {
+        let url = URL(string: "https://n3.miyayu.xyz/InventoryServer-0.0.1-SNAPSHOT-plain/treasurer/selectID?productId=\(productId)")!
+        let (data,_) = try! await URLSession.shared.data(from: url)
+        return try! Treasurer.getDecoder().decode([Treasurer].self, from: data)
+    }
+    func insertTreasurer(productId: Int, managerId: Int, count: Int) async throws {
+        let url = URL(string: "https://n3.miyayu.xyz/InventoryServer-0.0.1-SNAPSHOT-plain/treasurer")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = "productId=\(productId)&managerId=\(managerId)&count=\(count)".data(using: .utf8)
+        
+        print(request)
+        let (data,_) = try! await URLSession.shared.data(for: request)
+        print(data.base64EncodedString())
+    }
+}
+
 class FakeTreasurerRepository: TreasurerRepository {
     
     var treasurers: [Treasurer] = []
@@ -35,7 +59,7 @@ class FakeTreasurerRepository: TreasurerRepository {
                         id: id,
                         productId: i.id,
                         managerId: 1,
-                        modifyDate: Date(timeInterval: interval, since: currentDate),
+                        date: Date(timeInterval: interval, since: currentDate),
                         count: treasureCount
                     )
                     //出納情報をリストに追加する
@@ -82,7 +106,7 @@ class FakeTreasurerRepository: TreasurerRepository {
                 id: Int(arc4random()),
                 productId: productId,
                 managerId: managerId,
-                modifyDate: Date(),
+                date: Date(),
                 count: count
             )
             

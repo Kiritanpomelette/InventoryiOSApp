@@ -30,6 +30,7 @@ class EditScreenViewController: UIViewController ,UITextFieldDelegate{
     }
     
     func fetchData(){
+        print(productId)
         Task.detached {
             do {
                 if(await self.productId == nil) {

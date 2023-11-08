@@ -11,8 +11,29 @@ struct Treasurer: Codable {
     let id: Int
     let productId: Int
     let managerId: Int
-    let modifyDate: Date
+    let date: Date
     let count: Int
+    static func getDecoder() -> JSONDecoder{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // これは一貫性のためにしばしば推奨されます
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 8) // タイムゾーンを指定する場合
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }
+}
+
+extension Treasurer {
+    func getDecoder() -> JSONDecoder{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // これは一貫性のためにしばしば推奨されます
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 8) // タイムゾーンを指定する場合
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }
 }
 
 extension [Treasurer] {
@@ -29,7 +50,7 @@ extension [Treasurer] {
         for treasurer in self {
             if !Calendar.current.isDate(
                 today,
-                equalTo: treasurer.modifyDate,
+                equalTo: treasurer.date,
                 toGranularity: .day
             ){
                 continue
@@ -47,7 +68,7 @@ extension [Treasurer] {
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear,.weekOfYear], from: today))!
         let endOfWeek = calendar.date(byAdding: DateComponents(day: 7),to: startOfWeek)!
         for treasurer in self {
-            if treasurer.modifyDate >= startOfWeek && treasurer.modifyDate < endOfWeek {
+            if treasurer.date >= startOfWeek && treasurer.date < endOfWeek {
                 sum += treasurer.count
             }
         }
@@ -65,7 +86,7 @@ extension [Treasurer] {
         let nextMonth = calendar.date(byAdding: DateComponents(month: 1), to: startOfMonth)!
         
         for treasurer in self {
-            if treasurer.modifyDate >= startOfMonth && treasurer.modifyDate < nextMonth {
+            if treasurer.date >= startOfMonth && treasurer.date < nextMonth {
                 sum += treasurer.count
             }
         }
