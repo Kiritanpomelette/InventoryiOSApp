@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Treasurer {
+struct Treasurer: Codable {
     let id: Int
     let productId: Int
     let managerId: Int

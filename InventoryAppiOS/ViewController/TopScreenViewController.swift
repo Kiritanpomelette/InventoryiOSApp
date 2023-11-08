@@ -130,7 +130,7 @@ class TopScreenViewController: UIViewController,UITableViewDelegate,UITableViewD
 
 extension SwinjectStoryboard {
     class public func setup() {
-        let productsRepository: ProductsRepository = FakeProductsRepository()
+        let productsRepository: ProductsRepository = ProductsRepositoryImpl()
         let treasurerRepository: TreasurerRepository = FakeTreasurerRepository(repository: productsRepository)
         
         defaultContainer.register(ProductsRepository.self){ _ in
